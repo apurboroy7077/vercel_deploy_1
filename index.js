@@ -1,7 +1,7 @@
 console.log("Hello World California");
 let the_http = require("http");
 let the_fs = require("fs");
-let the_port = 3000;
+let the_port = process.env.PORT || 3000;
 let the_host = "127.0.0.1";
 let the_server = the_http.createServer((request, response) => {
   let file_serving = (file_location, status_code) => {
@@ -21,6 +21,6 @@ let the_server = the_http.createServer((request, response) => {
     file_serving("files/error.html", 404);
   }
 });
-the_server.listen(the_port, the_host, () => {
+the_server.listen(the_port, () => {
   console.log(`Your Server is Deployed at http://${the_host}:${the_port}`);
 });
